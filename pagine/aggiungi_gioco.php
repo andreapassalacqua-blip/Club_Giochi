@@ -1,38 +1,48 @@
 <?php
-include('../db/config.php');
+// Includi il file di connessione al database
+include('../config/db.php');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $titolo = $_POST['titolo'];
-    $categoria = $_POST['categoria'];
-    $data_donazione = $_POST['data_donazione'];
-    $id_donatore = $_POST['id_donatore'];
+// Verifica se il modulo è stato inviato
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Estrai i dati dal modulo
+    $nome_gioco = $_POST['nome_gioco'];
+    $data_acquisto = $_POST['data_acquisto'];
+    $socio_donatore = $_POST['socio_donatore'];
 
-    // Verifica se esistono già 3 copie
-    $check = $conn->query("SELECT COUNT(*) as copie FROM giochi WHERE titolo = '$titolo'");
-    $copie = $check->fetch_assoc()['copie'];
+    // Prepara e esegui la query per aggiungere il gioco nel database
+    $query = "INSERT INTO giochi (nome_gioco, data_acquisto, socio_donatore) VALUES ('$nome_gioco', '$data_acquisto', '$socio_donatore')";
+    $result = mysqli_query($conn, $query);
 
-    if ($copie < 3) {
-        $sql = "INSERT INTO giochi (titolo, categoria, data_donazione, id_donatore)
-                VALUES ('$titolo', '$categoria', '$data_donazione', " . ($id_donatore ? "'$id_donatore'" : "NULL") . ")";
-
-        if ($conn->query($sql) === TRUE) {
-            echo "✅ Gioco aggiunto con successo!";
-        } else {
-            echo "❌ Errore: " . $conn->error;
-        }
+    // Verifica se la query è stata eseguita correttamente
+    if ($result) {
+        echo "Gioco aggiunto con successo!";
     } else {
-        echo "❌ Sono già presenti 3 copie di questo gioco.";
+        echo "Errore nell'aggiunta del gioco: " . mysqli_error($conn);
     }
-
-    $conn->close();
 }
 ?>
 
-<h2>Aggiungi un nuovo gioco</h2>
-<form method="post">
-    Titolo: <input type="text" name="titolo" required><br>
-    Categoria: <input type="text" name="categoria"><br>
-    Data donazione: <input type="date" name="data_donazione" required><br>
-    ID Donatore (facoltativo): <input type="number" name="id_donatore"><br>
-    <input type="submit" value="Aggiungi">
-</form>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggiungi Gioco</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>Aggiungi un Nuovo Gioco</h1>
+    <form method="POST" action="">
+        <label for="nome_gioco">Nome Gioco:</label><br>
+        <input type="text" id="nome_gioco" name="nome_gioco" required><br><br>
+
+        <label for="data_acquisto">Data di Acquisto:</label><br>
+        <input type="date" id="data_acquisto" name="data_acquisto" required><br><br>
+
+        <label for="socio_donatore">Socio Donatore (se applicabile):</label><br>
+        <input type="text" id="socio_donatore" name="socio_donatore"><br><br>
+
+        <input type="submit" value="Aggiungi Gioco">
+    </form>
+</body>
+</html>
