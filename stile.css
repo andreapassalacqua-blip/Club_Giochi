@@ -1,138 +1,184 @@
-/* Reset di base */
+/* General Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Rimuove i margini di default */
+    padding: 0; /* Rimuove i padding di default */
+    box-sizing: border-box; /* Assicura che padding e border siano inclusi nelle dimensioni dell'elemento */
+    font-family: 'Arial', sans-serif; /* Imposta il font di default */
 }
 
-/* Corpo della pagina */
+/* Body */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0; /* Sfondo grigio chiaro */
-    color: #333;
-    padding: 30px;
-    line-height: 1.6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Copre tutta la finestra del browser */
+    background-color: #f0f2f5; /* Imposta il colore di sfondo per il corpo della pagina */
+    color: #333; /* Colore del testo */
+    line-height: 1.6; /* Imposta l'altezza della riga per migliorare la leggibilità */
+    font-size: 1rem; /* Imposta la dimensione del font di base */
 }
 
-/* Contenitore principale */
-.main-container {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    width: 100%;
-    padding: 40px;
-    text-align: center;
+/* Header */
+header {
+    background-color: #333; /* Colore di sfondo dell'intestazione */
+    color: #fff; /* Colore del testo dell'intestazione */
+    padding: 20px 0; /* Padding verticale per l'intestazione */
+    text-align: center; /* Allinea il testo al centro */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Aggiunge una leggera ombra */
 }
 
-/* Titolo principale */
-h1 {
-    color: #4CAF50; /* Verde */
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+header h1 {
+    font-size: 2.5rem; /* Imposta la dimensione del font per il titolo */
+    font-weight: 700; /* Imposta un peso maggiore per il titolo */
+    letter-spacing: 2px; /* Aumenta la spaziatura tra le lettere */
 }
 
-/* Descrizione sotto il titolo */
-p {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 30px;
+/* Container */
+.container {
+    width: 90%; /* Imposta la larghezza del contenitore al 90% della pagina */
+    max-width: 1200px; /* Imposta una larghezza massima per il contenitore */
+    margin: 30px auto; /* Imposta margine verticale di 30px e centrato orizzontalmente */
+    padding: 40px; /* Padding interno del contenitore */
+    background-color: white; /* Colore di sfondo del contenitore */
+    border-radius: 8px; /* Arrotonda gli angoli del contenitore */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Aggiunge una transizione per il movimento e l'ombra */
 }
 
-/* Pulsante principale */
-button {
-    padding: 15px 25px;
-    background-color: #4CAF50; /* Verde */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+.container:hover {
+    transform: scale(1.02); /* Leggera espansione del contenitore quando il mouse è sopra */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Ombra più marcata quando il mouse è sopra */
 }
 
-button:hover {
-    background-color: #45a049;
-    transform: scale(1.05); /* Piccola animazione al passaggio del mouse */
+/* Form Styling */
+form {
+    display: flex; /* Imposta il form come contenitore flessibile */
+    flex-direction: column; /* Organizza gli elementi del form in una colonna */
+    gap: 20px; /* Distanza tra gli elementi del form */
 }
 
-/* Link e pulsanti secondari */
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+    padding: 14px; /* Padding interno per gli input */
+    font-size: 1rem; /* Dimensione del font */
+    border: 2px solid #ccc; /* Colore di bordo */
+    border-radius: 6px; /* Arrotonda gli angoli */
+    outline: none; /* Rimuove il bordo di focus di default */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transizione per il bordo e l'ombra */
+    background-color: #fafafa; /* Colore di sfondo degli input */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus {
+    border-color: #4CAF50; /* Colore del bordo quando l'input è in focus */
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5); /* Ombra verde quando l'input è in focus */
+}
+
+/* Submit Button */
+button[type="submit"] {
+    background-color: #4CAF50; /* Colore di sfondo per il pulsante */
+    color: white; /* Colore del testo del pulsante */
+    padding: 15px; /* Padding interno del pulsante */
+    font-size: 1.1rem; /* Dimensione del font del pulsante */
+    border: none; /* Rimuove il bordo di default */
+    border-radius: 6px; /* Arrotonda gli angoli del pulsante */
+    cursor: pointer; /* Cambia il cursore quando sopra il pulsante */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transizione per il colore di sfondo e il movimento */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049; /* Cambia colore di sfondo al passaggio del mouse */
+    transform: translateY(-2px); /* Leggero movimento verso l'alto quando il mouse è sopra */
+}
+
+/* Table Styles */
+table {
+    width: 100%; /* Imposta la larghezza della tabella al 100% */
+    border-collapse: collapse; /* Collassa i bordi della tabella */
+    margin-top: 30px; /* Distanza sopra la tabella */
+}
+
+th, td {
+    padding: 16px; /* Padding per le celle della tabella */
+    text-align: left; /* Allinea il testo a sinistra */
+    border-bottom: 1px solid #ddd; /* Aggiunge un bordo sottile alla parte inferiore delle celle */
+}
+
+th {
+    background-color: #4CAF50; /* Colore di sfondo per le intestazioni della tabella */
+    color: white; /* Colore del testo delle intestazioni */
+    font-size: 1.1rem; /* Dimensione del font per le intestazioni */
+    font-weight: 600; /* Peso del font per le intestazioni */
+}
+
+td {
+    background-color: #f9f9f9; /* Colore di sfondo per le celle */
+}
+
+tr:nth-child(even) td {
+    background-color: #f2f2f2; /* Colore alternato per le righe della tabella */
+}
+
+tr:hover td {
+    background-color: #eaeaea; /* Colore di sfondo per le righe al passaggio del mouse */
+    transition: background-color 0.3s ease; /* Transizione per il colore di sfondo */
+}
+
+/* Link Styling */
 a {
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 20px;
+    color: #4CAF50; /* Colore del testo dei link */
+    text-decoration: none; /* Rimuove la sottolineatura dai link */
+    font-weight: bold; /* Imposta il font dei link in grassetto */
+    transition: color 0.3s ease; /* Transizione per il colore dei link */
 }
 
 a:hover {
-    text-decoration: underline;
+    color: #45a049; /* Cambia il colore del link al passaggio del mouse */
 }
 
-/* Stile per la sezione dei giochi */
-.games-section {
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
+/* Footer */
+footer {
+    background-color: #333; /* Colore di sfondo del footer */
+    color: white; /* Colore del testo del footer */
+    text-align: center; /* Allinea il testo al centro */
+    padding: 15px 0; /* Padding del footer */
+    margin-top: 40px; /* Distanza sopra il footer */
 }
 
-.game-card {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
+footer p {
+    font-size: 0.9rem; /* Dimensione del font nel footer */
 }
 
-.game-card h3 {
-    color: #4CAF50;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.game-card p {
-    font-size: 1rem;
-    color: #666;
-}
-
-.game-card button {
-    margin-top: 15px;
-    background-color: #007BFF; /* Blu per pulsante secondario */
-    font-size: 1rem;
-    padding: 10px 20px;
-}
-
-.game-card button:hover {
-    background-color: #0056b3;
-}
-
-/* Responsività per schermi più piccoli */
+/* Responsive Design */
 @media (max-width: 768px) {
-    body {
-        padding: 20px;
-    }
-
-    .main-container {
-        padding: 25px;
+    .container {
+        padding: 20px; /* Riduce il padding nei contenitori su schermi piccoli */
+        margin-top: 20px; /* Riduce la distanza sopra il contenitore */
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 2rem; /* Riduce la dimensione del titolo per schermi piccoli */
     }
 
-    .games-section {
-        grid-template-columns: 1fr 1fr;
+    form {
+        gap: 15px; /* Riduce la distanza tra gli elementi del form su schermi piccoli */
     }
 
-    .game-card {
-        padding: 15px;
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="date"],
+    select {
+        font-size: 0.9rem; /* Riduce la dimensione del font per gli input */
+        padding: 12px; /* Riduce il padding degli input */
+    }
+
+    button[type="submit"] {
+        font-size: 1rem; /* Riduce la dimensione del font del pulsante */
+        padding: 12px; /* Riduce il padding del pulsante */
     }
 }
