@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><title>Club Giochi</title></head>
+<link rel="stylesheet" href="../stile.css">
 <body>
     <h1>Benvenuto nel Club Giochi</h1>
     <ul>

@@ -1,6 +1,9 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 // Includi il file di connessione al database
-include('../config/db.php');
+include __DIR__ . '/../config/db.php';
 
 // Variabili per eventuali messaggi di errore o conferma
 $error = "";

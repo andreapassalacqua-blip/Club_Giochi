@@ -1,10 +1,13 @@
 <?php
-$host = "localhost";
-$user = "root";
-$password = "";
-$dbname = "club_giochi";
+$servername = "localhost";
+$username = "root";  // O il tuo username MySQL
+$password = "";      // O la tua password MySQL
+$dbname = "club_giochi";  // Il tuo nome di database
 
-$conn = new mysqli($host, $user, $password, $dbname);
+// Crea connessione
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verifica la connessione
 if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
